@@ -2,6 +2,10 @@ Justin Burris
 =============
 Just a software developer looking to learn all he can and have a great time creating awesome things.
 
+Feel free to contact me if you're interested in working with me on a project. I can be reached via github.
+
+* * *
+
 Education
 ---------
 Bachelor of Science in Computer Science
