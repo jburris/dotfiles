@@ -21,7 +21,8 @@ _In order of most to least competent_
 Employment History
 ------------------
 ### Software Developer - Vitrue #
-_Client Delievery, Mar '11 - Nov '11_
+
+> _Client Delievery, Mar '11 - Nov '11_
 
 - Developed and architected custom Facebook applications, on time and on budget, for fortune 500 companies such
 as Apple, P&G, Anheuser-Busch, Dell, Intel and others
@@ -33,13 +34,15 @@ several other projects which were designed to enhance Vitrue’s core offering
 
 
 ### Software Engineering Intern - Warner Robins AFB #
-_402 Maintenance Group, May '10 - Aug '10_
+
+> _402 Maintenance Group, May '10 - Aug '10_
 
 - Created inventory tracking software, replacing a hand maintained legacy system, saving several hours of time
 - Completed process improvement events, optimizing incorrect and broken processes
 
 ### Web Programmer - Georgia Southern University #
-_Student Web Innovation & Design Initiative, Mar '08 - May '10_
+
+> _Student Web Innovation & Design Initiative, Mar '08 - May '10_
 
 - Replaced course searching software used by thousands of students
 - Developed and launched the ‘Rideshare’ web site, designed to help students and faculty share rides
@@ -54,9 +57,7 @@ character are you?) Saw immediate adoption by Vitrue’s clients.
 - **Vitrue - Application Hub** Foresaw business need to have a central repository of all Vitrue’s 3000+ Facebook
 applications. Designed to allow for management, administration and advanced search of application inventory.
 - **Georgia Southern - Campus Course Search** An online course searching system, currently used by students and
-faculty to search and build class schedules 
-
-> [my.georgiasouthern.edu/courses
+faculty to search and build class schedules [my.georgiasouthern.edu/courses
 ](https://my.georgiasouthern.edu/courses)
 
 - **Computer Science Program - Mobile Course Tracker**  A cell phone course and grade tracking system. Written
