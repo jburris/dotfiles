@@ -4,11 +4,10 @@ Just a software developer looking to learn all he can and have a great time crea
 
 Feel free to contact me if you're interested in working with me on a project. I can be reached via github.
 
-* * *
-
 Education
 ---------
 Bachelor of Science in Computer Science
+
 > Georgia Southern Univeristy , December 2010
 
 Skillset
@@ -56,7 +55,9 @@ character are you?) Saw immediate adoption by Vitrue’s clients.
 applications. Designed to allow for management, administration and advanced search of application inventory.
 - **Georgia Southern - Campus Course Search** An online course searching system, currently used by students and
 faculty to search and build class schedules 
+
 > [my.georgiasouthern.edu/courses
 ](https://my.georgiasouthern.edu/courses)
+
 - **Computer Science Program - Mobile Course Tracker**  A cell phone course and grade tracking system. Written
 using low level J2ME graphics libraries. Exceeded professorial expectations.
