@@ -16,6 +16,7 @@ files.each { |file|  system "ln -s #{dot_folder}/dotfiles/#{file} #{home}/#{file
 
 # Install system packages with brew
 brew_packages = %w{ack bazaar git imagemagick memcached mongodb mysql node rbenv rbenv-gemset wget}
+brew_packages << "brew install emacs -cocoa --use-git-head -HEAD"
 
 puts "Installing homebrew packages"
 brew_packages.each do |package|
