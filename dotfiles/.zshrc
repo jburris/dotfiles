@@ -1,7 +1,7 @@
-# ---- CUSTOM SETTINGS ---- #
-alias emacs='open ~/Applications/Emacs.app'
-
 #!/bin/zsh
+
+# ---- CUSTOM SETTINGS ---- #
+
 #
 # Use keychain to start and manage ssh-agent
 #
