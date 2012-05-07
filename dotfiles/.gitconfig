@@ -1,0 +1,27 @@
+[user]
+	name = Justin Burris
+	email = justinbburris@gmail.com
+[push]
+  default = current
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	de = describe --all
+	l  = log --stat --decorate
+	lc = log ORIG_HEAD.. --stat --no-merges --decorate
+	lg = log --oneline --decorate
+	dc = diff --cached
+	diffc = diff --color-words
+	changes  = diff --name-status -r
+	diffstat = diff --stat -r
+  rv = remote -v
+  rm-branch = "!f() { git branch -d ${1} && git push origin :${1}; }; f"
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = auto
+[color "diff"]
+	commit = blue
