@@ -1,4 +1,5 @@
 /dotfiles/.emacs.d/backups/
 /dotfiles/.emacs.d/el-get/
 /dotfiles/.emacs.d/auto-save-list/
-
+/dotfiles/.emacs.d/tramp
+/dotfiles/.emacs.d/places
