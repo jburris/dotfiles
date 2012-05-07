@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
+
 # Assumes the following programs have been installed and configured: homebrew & git
 # Also assumes you've checked out the dotfiles repository :)
+
+#TODO: Check for existing configurations
+#TODO: Ask if user wants to autoload
+#TODO: Fix emacs
 
 home = File.expand_path "~"
 dot_folder = home + "/.dotfiles"
@@ -16,7 +21,7 @@ files.each { |file|  system "ln -s #{dot_folder}/dotfiles/#{file} #{home}/#{file
 
 # Install system packages with brew
 brew_packages = %w{ack bazaar git imagemagick keychain memcached mongodb mysql node rbenv rbenv-gemset wget}
-brew_packages << "emacs -cocoa -HEAD --use-git-head"
+brew_packages << "--HEAD --use-git-head --cocoa emacs"
 
 puts "Installing homebrew packages"
 brew_packages.each do |package|
@@ -25,8 +30,6 @@ brew_packages.each do |package|
 end
 
 #### Package specific configurations (auto-launch, user creation, etc) ####
-#TODO: Check for existing configurations
-#TODO: Ask if user wants to autoload
 
 system "mkdir -p ~/Library/LaunchAgents"
 
