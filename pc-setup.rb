@@ -15,7 +15,7 @@ puts "Symlinking dotfiles"
 files.each { |file|  system "ln -s #{dot_folder}/dotfiles/#{file} #{home}/#{file}" }
 
 # Install system packages with brew
-brew_packages = %w{ack bazaar git imagemagick memcached mongodb mysql node rbenv rbenv-gemset wget}
+brew_packages = %w{ack bazaar git imagemagick keychain memcached mongodb mysql node rbenv rbenv-gemset wget}
 brew_packages << "emacs -cocoa -HEAD --use-git-head"
 
 puts "Installing homebrew packages"
