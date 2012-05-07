@@ -1,0 +1,39 @@
+
+;; ----- smex-history -----
+(
+ magit-status
+ goto-line
+ magit-add-change-log-entry
+ replace-string
+ apropos
+ auto-fill-mode
+ toggle-truncate-lines
+)
+
+;; ----- smex-data -----
+(
+ (package-install . 3)
+ (js-mode . 1)
+ (auto-fill-mode . 4)
+ (el-get-install . 2)
+ (yaml-mode . 1)
+ (rhtml-mode . 1)
+ (sh-mode . 2)
+ (apropos . 8)
+ (magit-status . 13)
+ (magit-mode-menu . 1)
+ (magit-commit-mode . 2)
+ (magit-diff . 1)
+ (magit-show . 1)
+ (ruby-mode . 1)
+ (javascript-mode . 1)
+ (indent-region . 3)
+ (css-mode . 6)
+ (html-mode . 6)
+ (revert-buffer . 1)
+ (kill-buffer . 1)
+ (toggle-truncate-lines . 2)
+ (replace-string . 1)
+ (magit-add-change-log-entry . 1)
+ (goto-line . 2)
+)
