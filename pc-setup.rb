@@ -2,7 +2,7 @@
 
 # Assumes the following programs have been installed and configured: homebrew & git
 # Also assumes you've checked out the dotfiles repository :)
-
+#TODO: Override symlinks
 #TODO: Check for existing configurations
 #TODO: Ask if user wants to autoload
 #TODO: Fix emacs
