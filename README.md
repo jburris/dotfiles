@@ -15,3 +15,10 @@ Additional steps
 ### Set ZSH to be home directory
 
 1. Execute `chsh`
+
+### Remap capslock to ctrl
+
+1. Open `System Preferences`
+1. Select `Keyboard`
+1. Click `Modifier Keys`
+1. Map `Caps Lock` to `Control`
