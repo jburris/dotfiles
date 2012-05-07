@@ -23,10 +23,27 @@ brew_packages.each do |package|
   system "brew install #{package}" 
 end
 
-###### Package specific configurations (auto-launch, user creation, etc)
+#### Package specific configurations (auto-launch, user creation, etc) ####
+#TODO: Check for existing configurations
+#TODO: Ask if user wants to autoload
 
 system "mkdir -p ~/Library/LaunchAgents"
 
 #memcached
+puts "Start memcached on login"
 system "cp /usr/local/Cellar/memcached/1.4.13/homebrew.mxcl.memcached.plist ~/Library/LaunchAgents/"
 system "launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist"
+
+#mongodb
+puts "Start mongodb on login"
+system "cp /usr/local/Cellar/mongodb/2.0.4-x86_64/homebrew.mxcl.mongodb.plist ~/Library/LaunchAgents/"
+system "launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist"
+
+#mysql
+puts "Installing initial mysql db"
+system "unset TMPDIR"
+system %{mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp}
+
+puts "Start mysql on login"
+system "cp /usr/local/Cellar/mysql/5.5.20/homebrew.mxcl.mysql.plist ~/Library/LaunchAgents/"
+system "launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
