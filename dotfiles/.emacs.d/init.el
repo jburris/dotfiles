@@ -11,6 +11,7 @@
 (tool-bar-mode -1)
 
 ;; el-get
+;; Must be initialized 
 ;; https://github.com/dimitri/el-get
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
