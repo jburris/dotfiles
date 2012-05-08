@@ -1,11 +1,12 @@
 #!/bin/zsh
 
-# ---- CUSTOM SETTINGS ---- #
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=$HOME/.history_zsh
 
-#
+alias emacs='open ~/Applications/Emacs.app'
+
 # Use keychain to start and manage ssh-agent
-#
-
 sj_setup_ssh_agent() {
     local kcfiles file keyhost
     keyhost=jburris # use a fixed hostname, no nfs here
