@@ -5,6 +5,12 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=$HOME/.history_zsh
 
+# Load ZSH init files, prioritized by name
+for file in $ZDIR/init.d/S[0-9][0-9]_*; do
+		source $file
+done
+unset file
+
 # Lets get some prompt action going on
 PROMPT='%n@%m :: %3c '
 
@@ -12,6 +18,7 @@ PROMPT='%n@%m :: %3c '
 
 
 alias emacs='open ~/Applications/Emacs.app'
+
 
 
 

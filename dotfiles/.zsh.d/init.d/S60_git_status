@@ -1,0 +1,90 @@
+#!/bin/zsh
+#
+# If in git repo : Show status
+
+autoload -Uz add-zsh-hook
+
+# All of this is taken from Sudish Joseph
+# Blame him.
+# https://github.com/sudish/dotfiles/blob/master/.zsh.d/init.d/S90_git_status
+
+# Create an array called jb_git & initialize it
+typeset -A jb_git
+jb_git=()
+
+jb_git_status_update() {
+		local git_dir branch
+
+		[[ -n $JB_DEBUG ]] && echo "Parsing git state" >/dev/tty
+
+		jb_git[dir]=
+		git_dir=$(git rev-parse --git-dir 2>/dev/null) || return
+
+		jb_git[state]=
+    if [[ -d $git_dir/rebase-apply ]]; then
+        if [[ -f $git_dir/rebase-apply/rebasing ]]; then
+            jb_git[state]="|REBASE"
+        elif [[ -f $git_dir/rebase-apply/applying ]]; then
+            jb_git[state]="|AM"
+        else
+            jb_git[state]="|AM/REBASE"
+        fi
+        branch="$(git symbolic-ref HEAD 2>/dev/null)"
+    elif [[ -f $git_dir/rebase-merge/interactive ]]; then
+        jb_git[state]="|REBASE -i"
+        branch="$(cat "$git_dir/rebase-merge/head-name")"
+    elif [[ -d $git_dir/rebase-merge ]]; then
+        jb_git[state]="|REBASE -m"
+        branch="$(cat "$git_dir/rebase-merge/head-name")"
+    elif [[ -f $git_dir/MERGE_HEAD ]]; then
+        jb_git[state]="|MERGING"
+        branch="$(git symbolic-ref HEAD 2>/dev/null)"
+    else
+        if [[ -f $git_dir/BISECT_LOG ]]; then
+						jb_git[state]="|BISECTING"
+				fi
+        branch=$(git symbolic-ref HEAD 2>/dev/null) || \
+						branch=$(git describe --exact-match HEAD 2>/dev/null) || \
+						branch="$(cut -c1-7 "$git_dir/HEAD")..."
+    fi
+		
+		jb_git[stash]=
+		if [[ -e $git_dir/refs/stash ]]; then
+				jb_git[stash]='$'
+		fi
+		
+		jb_git[svn]=
+		if [[ -e $git_dir/svn/.metadata ]]; then
+				jb_git[svn]='S'
+		fi
+
+		jb_git[status]=
+		git diff --no-ext-diff --ignore-submodules --quiet --exit-code \
+				|| jb_git[status]+='*'
+		if git rev-parse --quiet --verify HEAD >/dev/null; then
+				git diff-index --cached --ignore-submodules --quiet HEAD -- \
+						|| jb_git[status]-'+'
+		else
+				jb_git[status]+='#'
+		fi
+
+		local git_full_dir
+		git_full_dir=$(readlink -f ${git_dir:h})
+    # "" quotes needed here to stop auto_name_dirs.
+    # though why "" stops it from happening is a mystery, albeit a nice one
+    jb_git[dir]="${git_full_dir/$HOME/~}"
+    jb_git[branch]=${branch#refs/heads/}
+}
+
+jb_git_chpwd_update() {
+		jb_git_status_update
+}
+
+jb_git_precmd_update() {
+    case $(history $(($HISTCMD - 1)) ) in   # last command entered
+        *git*) jb_git_status_update ;;
+    esac
+}
+
+add-zsh-hook precmd jb_git_precmd_update
+add-zsh-hook sj_git_chpwd_update
