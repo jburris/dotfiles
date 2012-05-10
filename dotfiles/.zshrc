@@ -1,19 +1,22 @@
-# ---- oh-my-zsh ---- #
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
-# Set name of the theme to load.
-ZSH_THEME="afowler"
-# red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(brew)
-source $ZSH/oh-my-zsh.sh
+#!/bin/zsh
 
-# ---- CUSTOM SETTINGS ---- #
+# please save my history ZSH
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=$HOME/.history_zsh
+
+# Lets get some prompt action going on
+PROMPT='%n@%m :: %3c '
+
+
+
+
 alias emacs='open ~/Applications/Emacs.app'
 
-#!/bin/zsh
-#
+
+
+
+
 # Use keychain to start and manage ssh-agent
 #
 
