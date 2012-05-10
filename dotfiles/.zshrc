@@ -1,4 +1,18 @@
 #!/bin/zsh
+#
+# ZSH init file
+# Invaluable resource :
+# http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html
+
+# All parameters subsequently defined are automatically exported.
+# NOTE: What does this mean?
+set -a
+
+# location of zsh configs & etc
+ZDIR=~/.zsh.d
+
+autoload -Uz add-zsh-hook
+
 
 # please save my history ZSH
 HISTSIZE=10000
