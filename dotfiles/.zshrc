@@ -14,6 +14,8 @@ ZDIR=~/.zsh.d
 # Additional functions and completions
 fpath+=$ZDIR/funcitons
 
+autoload -Uz add-zsh-hook #autoload loads the function when its executed, not on startup
+
 # Load ZSH init files, prioritized by name
 for file in $ZDIR/init.d/S[0-9][0-9]_*; do
   source $file
