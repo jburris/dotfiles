@@ -2,7 +2,7 @@
 l () { ls -al $* }
 
 # Use keychain to start and manage ssh-agent
-sj_setup_ssh_agent() {
+jb_setup_ssh_agent() {
     local kcfiles file keyhost
     keyhost=jburris # use a fixed hostname, no nfs here
 
@@ -20,5 +20,4 @@ sj_setup_ssh_agent() {
         fi
     fi
 }
-sj_setup_ssh_agent
-
+jb_setup_ssh_agent
