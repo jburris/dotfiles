@@ -10,6 +10,9 @@
 ;; disable tool-bar
 (tool-bar-mode -1)
 
+;; Scroll bars? What is this, 2003?
+(scroll-bar-mode -1)
+
 ;; el-get
 ;; Must be initialized 
 ;; https://github.com/dimitri/el-get
