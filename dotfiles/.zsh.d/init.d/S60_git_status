@@ -75,6 +75,29 @@ jb_git_status_update() {
     jb_git[branch]=${branch#refs/heads/}
 }
 
+jb_git_ps1() {
+		if [[ -z $jb_git[dir] ]]; then
+				echo "$git_info_msg_0_"
+				return
+		fi
+		local col
+
+		local res
+    # the branch name
+		res="${jb_git[branch]}"
+
+		# Are there changes not in the index?
+		[[ -n $jb_git[status] ]] && res+="${jb_git[status]}"
+
+		# Does git stash contain changes?
+		[[ -n $jb_git[stash] ]] && res+="${jb_git[stash]}"
+
+		# What is the current state of the repo?
+		[[ -n $jb_git[state] ]] && res+="${jb_git[state]}"
+
+		echo " %Bgit%b:$res"
+}
+
 jb_git_chpwd_update() {
 		jb_git_status_update
 }
