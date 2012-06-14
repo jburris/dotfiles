@@ -20,8 +20,8 @@ puts "Symlinking dotfiles"
 files.each { |file|  system "ln -s #{dot_folder}/dotfiles/#{file} #{home}/#{file}" }
 
 # Install system packages with brew
-brew_packages = %w{ack bazaar git imagemagick keychain memcached mongodb mysql node rbenv rbenv-gemset wget}
-brew_packages << "--HEAD --use-git-head --cocoa emacs"
+brew_packages = %w{ack bazaar git git-flow imagemagick keychain memcached mongodb mysql node rbenv rbenv-gemset ruby-build wget}
+brew_packages << "--HEAD --use-git-head --cocoa emacs" # emacs is a special snowflake
 
 puts "Installing homebrew packages"
 brew_packages.each do |package|
@@ -51,3 +51,8 @@ system %{mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix m
 puts "Start mysql on login"
 system "cp /usr/local/Cellar/mysql/5.5.20/homebrew.mxcl.mysql.plist ~/Library/LaunchAgents/"
 system "launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
+
+puts "NOTE : To run ruby versions older than 1.9.2 you need to install GCC as OS X no longer comes with it"
+puts "Download it here : https://github.com/kennethreitz/osx-gcc-installer"
+
+puts "Afterward, install ruby : rbenv install `cat ~/.rbenv-version`"
