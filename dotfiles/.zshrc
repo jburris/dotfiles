@@ -32,5 +32,5 @@ SAVEHIST=10000
 HISTFILE=$HOME/.history_zsh
 
 # Lets get some prompt action going on
-PROMPT='%n@%m :: %3c '
+# PROMPT='%n@%m :: %3c '
 

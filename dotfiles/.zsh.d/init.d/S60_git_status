@@ -6,6 +6,8 @@
 # https://github.com/sudish/dotfiles/blob/master/.zsh.d/init.d/S90_git_status
 # Blame him.
 
+autoload -Uz add-zsh-hook
+
 # Create an array called jb_git & initialize it
 typeset -A jb_git
 jb_git=()
@@ -60,14 +62,14 @@ jb_git_status_update() {
 		git diff --no-ext-diff --ignore-submodules --quiet --exit-code \
 				|| jb_git[status]+='*'
 		if git rev-parse --quiet --verify HEAD >/dev/null; then
-				git diff-index --cached --ignore-submodules --quiet HEAD -- \
-						|| jb_git[status]-'+'
+				git diff-index --cached --quiet --ignore-submodules HEAD -- \
+						|| jb_git[status]+='+'
 		else
 				jb_git[status]+='#'
 		fi
 
 		local git_full_dir
-		git_full_dir=$(readlink ${git_dir:h}) # readlink -f isn't working on os x on my box
+		git_full_dir=${git_dir:h}
 
     # "" quotes needed here to stop auto_name_dirs.
     # though why "" stops it from happening is a mystery, albeit a nice one
@@ -76,12 +78,11 @@ jb_git_status_update() {
 }
 
 jb_git_ps1() {
-		if [[ -z $jb_git[dir] ]]; then
-				echo "$git_info_msg_0_"
+    if [[ -z $jb_git[dir] ]]; then
+				echo "$vcs_info_msg_0_"
 				return
 		fi
-		local col
-
+    
 		local res
     # the branch name
 		res="${jb_git[branch]}"

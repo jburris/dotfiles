@@ -1,0 +1,53 @@
+#!/bin/zsh
+#
+# Let's get some prompt action onnnn
+#
+# Setup PS1
+
+autoload -Uz add-zsh-hook
+
+# show rbenv info
+if [[ $jb_rbenv_present == 1 ]]; then
+    jb_rbenv_prompt() {
+        echo -n " $jb_rbenv_prommpt"
+    }
+
+    jb_update_rbenv_prompt() {
+        local jb_rbenv_info
+        jb_rbenv_info=`rbenv version | cut -f 1 -d \ `@[`rbenv gemset active 2>&/dev/null`]
+        jb_rbenv_prompt="%Brbenv:%b$jb_rbenv_info"
+    }
+
+    add-zsh-hook chpwd jb_update_rbenv_prompt
+fi
+
+function jb_prompt_init() {
+    local jb_ps_info
+    jb_ps_info=''
+
+    # Hostname and pwd
+    jb_ps_info+="%B%m%b:%~"
+
+    # Git status info for pwd
+    jb_ps_info+="$(jb_git_ps1)"
+
+    # rbenv current ruby@gemset
+    [[ $jb_rbenv_present == 1 ]] && jb_ps_info+="$(jb_rbenv_prompt)"
+
+    # Number of background jobs (if any)
+    jb_ps_info+="%(1j: [+%j]:)"
+
+    # Exit status of last job (if non-zero)
+    jb_ps_info+="%(?.. [%?])"
+
+    # The multiline prmopt
+    PS1="$jb_ps_info
+%B%#%b "
+
+}
+
+if [[ $TERM = dumb ]]; then
+    PS1='%# '
+else
+    jb_prompt_init
+fi
