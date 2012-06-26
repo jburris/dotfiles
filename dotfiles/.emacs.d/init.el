@@ -1,8 +1,20 @@
 ;; Enter key now properly indents current line, moves to next & indents to proper indentation lvl
 (define-key global-map (kbd "RET") 'reindent-then-newline-and-indent)
 
-;; Turns off god awful autofill mode.
+(add-hook 'ruby-mode-hook
+					(defun jb/ruby-newline-and-indent ()
+						(define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)))
+
+;; I want commit messages to auto-fill. Let's make 'em pretty!
+(add-hook 'magit-log-edit-mode-hook
+					(defun jb/magit-auto-fill-mode ()
+						(auto-fill-mode 1)))
+
+
+;; Turns off god awful autofill mode for regular work.
 (auto-fill-mode -1)
+
+(scroll-bar-mode -1)
 
 ;; ido - incremental completion
 (ido-mode 1)
@@ -10,21 +22,29 @@
 ;; disable tool-bar
 (tool-bar-mode -1)
 
+;; fix indentation of entire file
+;; (defun iwb ()
+;;   "indent whole buffer"
+;;   (interactive)
+;;   (delete-trailing-whitespace)
+;;   (indent-region (point-min) (point-max) nil)
+;;   (untabify (point-min) (point-max)))
+
 ;; el-get
 ;; https://github.com/dimitri/el-get
-
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (require 'el-get)
 
 (setq el-get-sources
       '(el-get
-				magit
+        magit
         yaml-mode
         rhtml-mode
+				ruby-electric
         color-theme
-				(:name color-theme-solarized
-							 :after (lambda ()
-												(color-theme-solarized-dark)))))
+        (:name color-theme-solarized
+               :after (lambda ()
+                        (color-theme-solarized-dark)))))
 
 (el-get 'sync)
 
@@ -32,7 +52,7 @@
 ;; https://github.com/technomancy/emacs-starter-kit
 (require 'package)
 (add-to-list 'package-archives
-						 '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (package-initialize)
 
@@ -64,12 +84,12 @@
       ;; set-frame-size takes character rows and columns, so convert
       ;; all the pixel-based values accordingly.
       (let* ((rows (/ (display-pixel-height) (frame-char-height)))
-         (cols (/ (display-pixel-width)  (frame-char-width)))
-         (fringe-pixels (+ (fp 'left-fringe) (fp 'right-fringe)))
-         (fringe (/ fringe-pixels (frame-char-width)))
-         (scrollbar (/ (fp 'scroll-bar-width) (frame-char-width)))
-         (real-cols (- cols fringe scrollbar)))
-    (set-frame-size (selected-frame) real-cols rows))
+             (cols (/ (display-pixel-width)  (frame-char-width)))
+             (fringe-pixels (+ (fp 'left-fringe) (fp 'right-fringe)))
+             (fringe (/ fringe-pixels (frame-char-width)))
+             (scrollbar (/ (fp 'scroll-bar-width) (frame-char-width)))
+             (real-cols (- cols fringe scrollbar)))
+        (set-frame-size (selected-frame) real-cols rows))
       ;; Move this frame's window decoration offscreen.
       ;; - The magic number here is the size of the decorator in pixels.
       ;; - vertical-gap is any leftover vertical space (pixels) after
@@ -78,6 +98,6 @@
       ;; - vertical-offset must be negative to move the window decoration
       ;;   offscreen.
       (let* ((decorator-size 24)
-         (vertical-gap (mod (display-pixel-height) (frame-char-height)))
-         (vertical-offset (- (/ vertical-gap 2) decorator-size)))
-    (set-frame-position (selected-frame) 0 vertical-offset)))))
+             (vertical-gap (mod (display-pixel-height) (frame-char-height)))
+             (vertical-offset (- (/ vertical-gap 2) decorator-size)))
+        (set-frame-position (selected-frame) 0 vertical-offset)))))
