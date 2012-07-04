@@ -1,6 +1,9 @@
 ;; Enter key now properly indents current line, moves to next & indents to proper indentation lvl
 (define-key global-map (kbd "RET") 'reindent-then-newline-and-indent)
 
+;; Dear god I don't want tabs
+(setq-default indent-tabs-mode nil)
+
 (add-hook 'ruby-mode-hook
 					(defun jb/ruby-newline-and-indent ()
 						(define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)))
@@ -21,14 +24,6 @@
 
 ;; disable tool-bar
 (tool-bar-mode -1)
-
-;; fix indentation of entire file
-;; (defun iwb ()
-;;   "indent whole buffer"
-;;   (interactive)
-;;   (delete-trailing-whitespace)
-;;   (indent-region (point-min) (point-max) nil)
-;;   (untabify (point-min) (point-max)))
 
 ;; el-get
 ;; https://github.com/dimitri/el-get
