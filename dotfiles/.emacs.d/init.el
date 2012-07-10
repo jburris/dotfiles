@@ -85,3 +85,15 @@
          (vertical-gap (mod (display-pixel-height) (frame-char-height)))
          (vertical-offset (- (/ vertical-gap 2) decorator-size)))
     (set-frame-position (selected-frame) 0 vertical-offset)))))
+
+;; Set tabstop values to 2
+(defun jb/generate-tab-stops (&optional width max)
+	"Return a sequence suitable for `tab-stop-list`."
+	(let* ((max-column (or max 200))
+				 (tab-wdith (or width tab-width))
+				 (count (/ max-column tab-width)))
+		(number-sequence tab-width (* tab-width count) tab-width)))
+
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
+(setq tab-stop-list (jb/generate-tab-stops))
