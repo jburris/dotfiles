@@ -1,6 +1,11 @@
 ;; Enter key now properly indents current line, moves to next & indents to proper indentation lvl
 (define-key global-map (kbd "RET") 'reindent-then-newline-and-indent)
 
+;; Ruby-mode also binds C-j to RET
+(add-hook 'ruby-mode-hook
+					(defun jb/ruby-newline-and-indent ()
+						(define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)))
+
 ;; Turns off god awful autofill mode.
 (auto-fill-mode -1)
 
@@ -22,13 +27,13 @@
 
 (setq el-get-sources
       '(el-get
-				magit
+        magit
         yaml-mode
         rhtml-mode
         color-theme
-				(:name color-theme-solarized
-							 :after (lambda ()
-												(color-theme-solarized-dark)))))
+        (:name color-theme-solarized
+               :after (lambda ()
+                        (color-theme-solarized-dark)))))
 
 (el-get 'sync)
 
@@ -36,7 +41,7 @@
 ;; https://github.com/technomancy/emacs-starter-kit
 (require 'package)
 (add-to-list 'package-archives
-						 '("marmalade" . "http://marmalade-repo.org/packages/") t)
+	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (package-initialize)
 
