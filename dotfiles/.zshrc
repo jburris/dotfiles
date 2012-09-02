@@ -5,6 +5,7 @@ SAVEHIST=10000
 HISTFILE=$HOME/.history_zsh
 
 alias emacs='open ~/Applications/Emacs.app'
+alias be='bundle exec'
 
 # Use keychain to start and manage ssh-agent
 sj_setup_ssh_agent() {
