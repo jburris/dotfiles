@@ -16,10 +16,9 @@ if [[ $jb_rbenv_present == 1 ]]; then
     }
 
     jb_update_rbenv_prompt() {
-        local jb_rbenv_info jb_rbenv_gemsets
-        jb_rbenv_info="%Brbenv:%b$cb[yellow]"`rbenv version | cut -f 1 -d \ `"$cb[none]"
-        jb_rbenv_gemsets="$cb[magenta]"`rbenv gemset active 2>&/dev/null`"$cb[none]"
-        jb_rbenv_ps1="$jb_rbenv_info@[$jb_rbenv_gemsets]"
+        local jb_rbenv_info
+        jb_rbenv_info=`rbenv version | cut -f 1 -d \ `@[`rbenv gemset active 2>&/dev/null`]
+        jb_rbenv_ps1="%Brbenv:%b$cb[yellow]$jb_rbenv_info$cb[none]"
     }
 
     add-zsh-hook chpwd jb_update_rbenv_prompt
