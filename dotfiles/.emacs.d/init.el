@@ -22,6 +22,8 @@
 				magit
         yaml-mode
         rhtml-mode
+        haml-mode
+				ruby-electric
         color-theme
 				(:name color-theme-solarized
 							 :after (lambda ()
@@ -43,6 +45,17 @@
 ;; Starter-kit packages I want installed
 (defvar my-packages '(starter-kit starter-kit-ruby starter-kit-lisp starter-kit-js)
   "A list of packages to ensure are installed at launch.")
+
+(add-to-list 'load-path "~/.emacs.d/elisp/feature-mode")
+;; optional configurations
+;; default language if .feature doesn't have "# language: fi"
+;(setq feature-default-language "fi")
+;; point to cucumber languages.yml or gherkin i18n.yml to use
+;; exactly the same localization your cucumber uses
+;(setq feature-default-i18n-file "/path/to/gherkin/gem/i18n.yml")
+;; and load feature-mode
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 ;; From Sudish
 ;; Emacs HEAD now has support for auto-hiding the OS X menubar.
