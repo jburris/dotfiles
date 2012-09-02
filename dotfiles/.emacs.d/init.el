@@ -28,7 +28,6 @@
 				(:name color-theme-solarized
 							 :after (lambda ()
 												(color-theme-solarized-dark)))))
-
 (el-get 'sync)
 
 ;; Emacs starter kit
@@ -43,7 +42,8 @@
   (package-refresh-contents))
 
 ;; Starter-kit packages I want installed
-(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-lisp starter-kit-js)
+(defvar my-packages
+  '(starter-kit starter-kit-ruby starter-kit-lisp starter-kit-js)
   "A list of packages to ensure are installed at launch.")
 
 (add-to-list 'load-path "~/.emacs.d/elisp/feature-mode")
