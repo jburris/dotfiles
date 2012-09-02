@@ -16,9 +16,10 @@ if [[ $jb_rbenv_present == 1 ]]; then
     }
 
     jb_update_rbenv_prompt() {
-        local jb_rbenv_info
-        jb_rbenv_info=`rbenv version | cut -f 1 -d \ `@[`rbenv gemset active 2>&/dev/null`]
-        jb_rbenv_ps1="%Brbenv:%b$jb_rbenv_info"
+        local jb_rbenv_info jb_rbenv_gemsets
+        jb_rbenv_info="%Brbenv:%b$cb[yellow]"`rbenv version | cut -f 1 -d \ `"$cb[none]"
+        jb_rbenv_gemsets="$cb[magenta]"`rbenv gemset active 2>&/dev/null`"$cb[none]"
+        jb_rbenv_ps1="$jb_rbenv_info@[$jb_rbenv_gemsets]"
     }
 
     add-zsh-hook chpwd jb_update_rbenv_prompt
@@ -29,7 +30,7 @@ function jb_prompt_init() {
     jb_ps_info=''
 
     # Hostname and pwd
-    jb_ps_info+="%B%m%b:%~"
+    jb_ps_info+="%B%m%b:$cb[cyan]%~$cb[none]"
 
     # Git status info for pwd
     jb_ps_info+='$(jb_git_ps1)'
@@ -38,10 +39,10 @@ function jb_prompt_init() {
     [[ $jb_rbenv_present == 1 ]] && jb_ps_info+='$(jb_rbenv_prompt)'
 
     # Number of background jobs (if any)
-    jb_ps_info+="%(1j: [+%j]:)"
+    jb_ps_info+="%(1j:$cb[magenta] [+%j]$cb[none]:)"
 
     # Exit status of last job (if non-zero)
-    jb_ps_info+="%(?.. [%?])"
+    jb_ps_info+="%(?..$cb[red] [%?]$cb[none])"
 
     # The multiline prmopt
     PS1="$jb_ps_info
@@ -104,7 +105,7 @@ function prompt_rsbox_eraseprompt() {
 function jb_prompt_precmd() {
 		if [[ $jb_preexec_ran == 0 ]]; then
 				prompt_rsbox_eraseprompt
-				print -P "%# "
+				print -P "$cb[green]%# $cb[none]"
     fi
     jb_preexec_ran=0
 }
