@@ -30,11 +30,12 @@
         magit
         yaml-mode
         rhtml-mode
+        haml-mode
+				ruby-electric
         color-theme
         (:name color-theme-solarized
                :after (lambda ()
                         (color-theme-solarized-dark)))))
-
 (el-get 'sync)
 
 ;; Emacs starter kit
@@ -49,7 +50,8 @@
   (package-refresh-contents))
 
 ;; Starter-kit packages I want installed
-(defvar my-packages '(starter-kit starter-kit-ruby starter-kit-lisp starter-kit-js)
+(defvar my-packages
+  '(starter-kit starter-kit-ruby starter-kit-lisp starter-kit-js)
   "A list of packages to ensure are installed at launch.")
 
 (add-to-list 'load-path "~/.emacs.d/elisp/feature-mode")
@@ -62,8 +64,6 @@
 ;; and load feature-mode
 (require 'feature-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
-
-
 
 ;; From Sudish
 ;; Emacs HEAD now has support for auto-hiding the OS X menubar.
