@@ -99,21 +99,48 @@ function prompt_rsbox_eraseprompt() {
     fi
 }
 
+# From Robert's rsbox prompt
+# must be an empty cmd line; just clear and redraw prompt one line down
 function jb_prompt_precmd() {
-    if [[ $jb_preexec_ran == 0 ]]; then
-	# From Robert's rsbox prompt
-        # must be an empty cmd line; just clear and redraw prompt one line down
-	prompt_rsbox_eraseprompt
-	print -P "$cb[green]%# $cb[none]"
+		if [[ $jb_preexec_ran == 0 ]]; then
+				prompt_rsbox_eraseprompt
+				print -P "%# "
     fi
-
     jb_preexec_ran=0
 }
+
+function jb_prompt_preexec() {
+    local cmd=$1 last=$?
+    prompt_rsbox_eraseprompt "$cmd"
+
+    if [[ $last != 0 ]]; then
+				echo `print -P "$cb[red][$last]$cb[none]"`
+    fi
+
+    # print -P "..$cmd.." will expand $cmd as part of prompt substitution
+    # so compute the prompt subst bits separately
+    local start=`print -P "$cb[green]%#"`
+    local end=`print -P "$cb[none]"`
+    echo "${start} ${cmd}${end}"
+
+    jb_preexec_ran=1
+}
+
+## TODO : Include is-at-least
+# prior to 4.3.15, zsh redraws what it assumes is a one-line prompt on
+# SIGWINCH, leaving bits of the old prompt on screen.
+#
+# trap the signal and handle the redraw ourselves if needed.
+# is-at-least 4.3.15 || function TRAPWINCH() {
+#     true # reset $?
+#     jb_prompt_preexec
+#     return 0
+# }
 
 if [[ $TERM = dumb ]]; then
     PS1='%# '
 else
     jb_prompt_init
-
 		add-zsh-hook precmd jb_prompt_precmd
+		add-zsh-hook preexec jb_prompt_preexec
 fi
