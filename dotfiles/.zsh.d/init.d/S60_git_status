@@ -5,6 +5,19 @@
 # All of this is taken from Sudish Joseph
 # https://github.com/sudish/dotfiles/blob/master/.zsh.d/init.d/S90_git_status
 # Blame him.
+#
+# Computes and displays the status of a git repo in PS1/RPS1.  Information
+# displayed includes: branch, '*' for un-added changes, '+' for uncommitted
+# changes, '$' for stashed changes.  In addition, the color of the status
+# display changes from green to blue if you're in a git svn repo.
+#
+#   setopt prompt_subst
+#   RPROMPT+='$(sj_git_ps1)'
+#
+# Inspired by and adapted from http://www.jukie.net/~bart/conf/zsh.d/S55_git
+# and Shawn O. Pearce's completion script for bash:
+# http://repo.or.cz/w/git.git?a=blob_plain;f=contrib/completion/git-completion.bash;hb=master
+
 
 autoload -Uz add-zsh-hook
 
@@ -82,19 +95,23 @@ jb_git_ps1() {
 				echo "$vcs_info_msg_0_"
 				return
 		fi
-    
+
+    local col
+    col="$cb[green]"
+    [[ -n $jb_git[svn] ]] && col="$cb[cyan]"
+
 		local res
     # the branch name
-		res="${jb_git[branch]}"
+		res="$col${jb_git[branch]}$cb[none]"
 
 		# Are there changes not in the index?
-		[[ -n $jb_git[status] ]] && res+="${jb_git[status]}"
+		[[ -n $jb_git[status] ]] && res+="$cb[magenta]${jb_git[status]}$cb[none]"
 
 		# Does git stash contain changes?
-		[[ -n $jb_git[stash] ]] && res+="${jb_git[stash]}"
+		[[ -n $jb_git[stash] ]] && res+="$cb[magenta]${jb_git[stash]}$cb[none]"
 
 		# What is the current state of the repo?
-		[[ -n $jb_git[state] ]] && res+="${jb_git[state]}"
+		[[ -n $jb_git[state] ]] && res+="$cb[red]${jb_git[state]}$cb[none]"
 
 		echo " %Bgit%b:$res"
 }
