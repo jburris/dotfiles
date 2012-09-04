@@ -1,0 +1,16 @@
+#!/bin/zsh
+# zsh keybindings
+
+bindkey -e
+bindkey ' ' magic-space
+
+# search history using entered prefix.
+# bind to control up- and down-arrow
+bindkey '\e[1;5A' history-beginning-search-backward
+bindkey '\e[1;5B' history-beginning-search-forward
+
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end  history-search-end
+bindkey '\e[A' history-beginning-search-backward-end
+bindkey '\e[B' history-beginning-search-forward-end
