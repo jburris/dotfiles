@@ -3,6 +3,13 @@ Justin Burris Config Files
 
 Various configs and dotfiles.
 
+Setup
+-----
+
+1. Install Homebrew
+1. Install XCode commandline tools
+1. `brew install git`
+
 Additional steps
 ----------------
 
