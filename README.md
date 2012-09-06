@@ -10,7 +10,7 @@ Setup
 1. Install XCode commandline tools
 1. `brew install git`
 1. `sudo passwd root`
-1. ruby `~/.dotfiles/pc-setup.rb`
+1. `ruby ~/.dotfiles/pc-setup.rb`
 
 Additional steps
 ----------------
