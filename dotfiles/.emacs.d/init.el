@@ -6,6 +6,10 @@
 					(defun jb/ruby-newline-and-indent ()
 						(define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)))
 
+(add-hook 'magit-log-edit-mode-hook
+					(defun jb/magit-auto-fill-mode ()
+						(auto-fill-mode 1)))
+
 ;; Turns off god awful autofill mode.
 (auto-fill-mode -1)
 
