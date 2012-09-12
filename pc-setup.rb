@@ -20,14 +20,19 @@ puts "Symlinking dotfiles"
 files.each { |file|  system "ln -s #{dot_folder}/dotfiles/#{file} #{home}/#{file}" }
 
 # Install system packages with brew
-brew_packages = %w{ack bazaar git git-flow imagemagick keychain memcached mongodb mysql node rbenv rbenv-gemset ruby-build wget}
-brew_packages << "--HEAD --use-git-head --cocoa emacs" # emacs is a special snowflake
+brew_packages = %w{ack bazaar git git-flow imagemagick keychain memcached mongodb mysql node rbenv rbenv-gemset ruby-build wget zsh}
 
 puts "Installing homebrew packages"
 brew_packages.each do |package|
   puts "Installing : #{package}"
   system "brew install #{package}" 
 end
+
+# Use ZSH as primary shell
+system "chsh -s /usr/local/bin/zsh jburris"
+
+# Install default ruby
+system "rbenv install `cat .rbenv-version`"
 
 #### Package specific configurations (auto-launch, user creation, etc) ####
 
