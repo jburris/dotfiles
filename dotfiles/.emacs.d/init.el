@@ -34,7 +34,7 @@
 				ruby-electric
         color-theme
         (:name color-theme-solarized
-               :after (lambda ()
+               :after (progn
                         (color-theme-solarized-dark)))))
 (el-get 'sync)
 
