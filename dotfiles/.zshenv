@@ -2,6 +2,7 @@
 unsetopt ksh_arrays
 d=( ~/bin
     ~/.rbenv/bin
+    /usr/local/share/npm/bin
     /usr/local/share/python
     /usr/local/sbin
     /usr/local/bin
@@ -24,7 +25,6 @@ done
 
 PATH=${(j.:.)${s}}           #TODO : Learn what this command is exactly doing
 unset d s dir
-
 
 # ---- RBENV ---- #
 eval "$(rbenv init -)"
