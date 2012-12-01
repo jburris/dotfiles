@@ -118,6 +118,17 @@
          (vertical-offset (- (/ vertical-gap 2) decorator-size)))
     (set-frame-position (selected-frame) 0 vertical-offset)))))
 
+(when (boundp 'mac-carbon-version-string)
+  (defun sj/mac-carbon-toggle-frame-fullscreen ()
+    "Make the current frame fullscreen."
+    (interactive)
+    (let* ((frame (selected-frame))
+	   (fs-param (if (eq (frame-parameter frame 'fullscreen) 'fullboth)
+			 nil
+		       'fullboth)))
+      (set-frame-parameter frame 'fullscreen fs-param)))
+  (define-key global-map [(super return)] 'sj/mac-carbon-toggle-frame-fullscreen))
+
 ;; Set tabstop values to 2
 (defun jb/generate-tab-stops (&optional width max)
 	"Return a sequence suitable for `tab-stop-list`."
