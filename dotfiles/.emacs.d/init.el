@@ -85,7 +85,7 @@
 ;; we have fullscreen mode under OS X.
 ;; (see e7f047d6f3e1ea53c8469c28279c2c284fd4d655)
 (when (boundp 'ns-auto-hide-menu-bar)
-  (define-key global-map [(super S-return)] 'sj/ns-toggle-menu-bar)
+  (define-key global-map [(super s-return)] 'sj/ns-toggle-menu-bar)
   (defun sj/ns-toggle-menu-bar ()
     "Toggle the auto-hide of the menu bar."
     (interactive)
@@ -136,6 +136,52 @@
 				 (tab-wdith (or width tab-width))
 				 (count (/ max-column tab-width)))
 		(number-sequence tab-width (* tab-width count) tab-width)))
+
+(defun sj/copy-keys-from-keymap (from-map keys &optional to-map)
+  "Copy the definitions of key sequences in `keys' from `from-map' to `to-map'.
+A new keymap is created if `to-map' is nil.  `keys' should be a
+list of the keys whose bindings are to be copied.  Each entry may
+also be of the form (from-key . to-key) if the keys differ in the
+two keymaps.
+
+Example:
+  (\"a\" [backspace]
+   (\"v\"  . \"k\")
+   ([?v] . [?\C-o])
+   (\"\C-y\" . \"x\"))
+
+The keymap will have `from-map's bindings for \"v\" on \"k\" and \"\C-o\",
+and the binding for \"\C-y\" on \"x\". The bindings for \"a\" and [backspace]
+will be copied as well."
+  (let ((new-map (or to-map (make-sparse-keymap))))
+    (dolist (entry keys)
+      (let ((from-key (if (listp entry) (car entry) entry))
+	    (to-key   (if (listp entry) (cdr entry) entry)))
+	(define-key new-map to-key (lookup-key from-map from-key))))
+     new-map))
+
+;; Distinguish between various Emacs ports to OS X
+(cond
+ ;; ns port
+ ((boundp 'ns-version-string)
+  (setq ns-antialias-text t
+        ns-option-modifier 'meta)
+  (define-key global-map [ns-drag-file] 'ns-find-file))
+ ;; mac port
+ ((boundp 'mac-carbon-version-string)
+  (setq mac-command-modifier 'super
+        mac-option-modifier  'meta)
+  ;; Command-S to save, C to copy, V to paste, etc.
+  (let ((keys '(("\C-x\C-s"    . [(super s)])
+                ("\C-w"        . [(super x)])
+                ("\M-w"        . [(super c)])
+                ("\C-y"        . [(super v)])
+                ("\C-xh"       . [(super a)])
+                ([(control /)] . [(super z)]))))
+    (sj/copy-keys-from-keymap global-map keys global-map))))
+
+(define-key global-map [(super =)]	'text-scale-adjust)
+(define-key global-map [(super -)]	'text-scale-adjust)
 
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
