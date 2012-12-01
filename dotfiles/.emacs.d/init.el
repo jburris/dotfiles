@@ -32,6 +32,8 @@
 (setq el-get-sources
       '(el-get
         magit
+        markdown
+        coffee-mode
         yaml-mode
         rhtml-mode
         haml-mode
@@ -45,9 +47,15 @@
 ;; Emacs starter kit
 ;; https://github.com/technomancy/emacs-starter-kit
 (require 'package)
-(add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
-
+;; (add-to-list 'package-archives
+;; 	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;; Emacs package manager
+(setq package-archives
+      '(("ELPA"		. "http://tromey.com/elpa/")
+        ("gnu"		. "http://elpa.gnu.org/packages/")
+        ("marmalade"	. "http://marmalade-repo.org/packages/")
+        ("melpa"	. "http://melpa.milkbox.net/packages/")
+        ("SC"		. "http://joseito.republika.pl/sunrise-commander/")))
 (package-initialize)
 
 (when (not package-archive-contents)
@@ -59,6 +67,7 @@
   "A list of packages to ensure are installed at launch.")
 
 (add-to-list 'load-path "~/.emacs.d/elisp/feature-mode")
+(add-to-list 'load-path "~/.emacs.d/elisp/less-css-mode")
 ;; optional configurations
 ;; default language if .feature doesn't have "# language: fi"
 ;(setq feature-default-language "fi")
@@ -67,6 +76,7 @@
 ;(setq feature-default-i18n-file "/path/to/gherkin/gem/i18n.yml")
 ;; and load feature-mode
 (require 'feature-mode)
+(require 'less-css-mode)
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
 
 ;; From Sudish
