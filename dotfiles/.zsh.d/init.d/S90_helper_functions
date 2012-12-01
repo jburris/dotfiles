@@ -1,6 +1,9 @@
 # General & Useful functions
 l () { ls -al $* }
 
+# autojump
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
 # Use keychain to start and manage ssh-agent
 
 jb_setup_ssh_agent() {

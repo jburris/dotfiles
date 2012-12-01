@@ -20,7 +20,7 @@ puts "Symlinking dotfiles"
 files.each { |file|  system "ln -s #{dot_folder}/dotfiles/#{file} #{home}/#{file}" }
 
 # Install system packages with brew
-brew_packages = %w{ack bazaar git git-flow imagemagick keychain memcached mongodb mysql node rbenv rbenv-gemset ruby-build wget zsh}
+brew_packages = %w{ack autojump bazaar git git-flow gnutls imagemagick keychain libxml2 memcached mongodb mysql node rbenv rbenv-gemset ruby-build wget zsh}
 
 puts "Installing homebrew packages"
 brew_packages.each do |package|
