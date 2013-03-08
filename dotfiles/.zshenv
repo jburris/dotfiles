@@ -1,7 +1,7 @@
 # Lets have a beautiful path ladies and gentlemen
 unsetopt ksh_arrays
 d=( ~/bin
-    ~/.rbenv/bin
+    ~/.rbenv/shims
     /usr/local/share/npm/bin
     /usr/local/share/python
     /usr/local/sbin

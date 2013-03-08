@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AdjustWindowForFontSizeChange</key>
+	<true/>
+	<key>AllowClipboardAccess</key>
+	<false/>
 	<key>AnimateDimming</key>
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
@@ -252,7 +256,7 @@
 	<key>FocusFollowsMouse</key>
 	<false/>
 	<key>FsTabDelay</key>
-	<real>1</real>
+	<real>3.0562500953674316</real>
 	<key>HiddenAFRStrokeThickness</key>
 	<real>0.0</real>
 	<key>HiddenAdvancedFontRendering</key>
@@ -289,35 +293,44 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NSNavBrowserPreferedColumnContentWidth</key>
+	<real>186</real>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/Documents</string>
-	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{585, 400}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
 	<string></string>
-	<key>NSTableView Columns KeyBingingTable</key>
-	<array>
-		<data>
-		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
-		hAErATCG
-		</data>
-		<string>198</string>
-		<data>
-		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
-		hAErATGG
-		</data>
-		<string>302</string>
-	</array>
-	<key>NSTableView Hidden Columns KeyBingingTable</key>
-	<array/>
-	<key>NSTableView Sort Ordering KeyBingingTable</key>
-	<array/>
+	<key>NSScrollAnimationEnabled</key>
+	<false/>
+	<key>NSToolbar Configuration Terminal Toolbar</key>
+	<dict>
+		<key>TB Display Mode</key>
+		<integer>1</integer>
+		<key>TB Icon Size Mode</key>
+		<integer>1</integer>
+		<key>TB Is Shown</key>
+		<integer>0</integer>
+		<key>TB Item Identifiers</key>
+		<array>
+			<string>New</string>
+			<string>Info</string>
+			<string>NSToolbarSeparatorItem</string>
+			<string>NSToolbarCustomizeToolbarItem</string>
+			<string>Close</string>
+			<string>NSToolbarSeparatorItem</string>
+			<string>Command</string>
+			<string>Profiles</string>
+		</array>
+		<key>TB Size Mode</key>
+		<integer>1</integer>
+		<key>TB Visibility Priority Values</key>
+		<dict/>
+	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>240 753 924 485 0 0 2560 1418 </string>
+	<string>353 338 924 485 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1257 236 934 1119 0 0 2560 1418 </string>
+	<string>569 91 970 967 0 0 1920 1058 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -400,20 +413,20 @@
 			<key>Ansi 2 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.020208755508065224</real>
+				<real>0.058632582426071167</real>
 				<key>Green Component</key>
-				<real>0.54115492105484009</real>
+				<real>0.94117647409439087</real>
 				<key>Red Component</key>
-				<real>0.44977453351020813</real>
+				<real>0.63361400365829468</real>
 			</dict>
 			<key>Ansi 3 Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.023484811186790466</real>
+				<real>0.14067891240119934</real>
 				<key>Green Component</key>
-				<real>0.46751424670219421</real>
+				<real>0.80566686391830444</real>
 				<key>Red Component</key>
-				<real>0.64746475219726562</real>
+				<real>0.85520362854003906</real>
 			</dict>
 			<key>Ansi 4 Color</key>
 			<dict>
@@ -497,11 +510,11 @@
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.56363654136657715</real>
+				<real>0.75113123655319214</real>
 				<key>Green Component</key>
-				<real>0.56485837697982788</real>
+				<real>0.75113123655319214</real>
 				<key>Red Component</key>
-				<real>0.50599193572998047</real>
+				<real>0.67694544792175293</real>
 			</dict>
 			<key>Character Encoding</key>
 			<integer>4</integer>
@@ -548,11 +561,11 @@
 			<key>Foreground Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.51685798168182373</real>
+				<real>0.56108599901199341</real>
 				<key>Green Component</key>
-				<real>0.50962930917739868</real>
+				<real>0.55446356534957886</real>
 				<key>Red Component</key>
-				<real>0.44058024883270264</real>
+				<real>0.47767400741577148</real>
 			</dict>
 			<key>Guid</key>
 			<string>BE2E21CE-BD98-4415-A35D-055D5A0F4F27</string>
@@ -1026,7 +1039,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.076074793934822083</real>
+			<real>0.039940826594829559</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
@@ -1819,7 +1832,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/jburris/.iterm2/</string>
+	<string>~/.iterm2/</string>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -1837,7 +1850,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2012-05-07T03:59:04Z</date>
+	<date>2013-03-08T14:24:14Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
@@ -1849,7 +1862,7 @@
 	<key>SmartPlacement</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.29373496770858765</real>
+	<real>0.1785256415605545</real>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
@@ -1885,6 +1898,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>1.0.0.20120326</string>
+	<string>1.0.0.20130302</string>
 </dict>
 </plist>
