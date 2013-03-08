@@ -5,7 +5,6 @@
 #TODO: Override symlinks
 #TODO: Check for existing configurations
 #TODO: Ask if user wants to autoload
-#TODO: Fix emacs
 
 home = File.expand_path "~"
 dot_folder = home + "/.dotfiles"
@@ -20,13 +19,11 @@ puts "Symlinking dotfiles"
 files.each { |file|  system "ln -s #{dot_folder}/dotfiles/#{file} #{home}/#{file}" }
 
 # Install system packages with brew
-brew_packages = %w{ack autojump bazaar git git-flow gnutls imagemagick keychain libxml2 memcached mongodb mysql node rbenv rbenv-gemset ruby-build wget zsh}
+puts "Installing brewdle"
+system "gem install brewdle"
 
 puts "Installing homebrew packages"
-brew_packages.each do |package|
-  puts "Installing : #{package}"
-  system "brew install #{package}" 
-end
+system "brewdle install"
 
 # Use ZSH as primary shell
 system "chsh -s /usr/local/bin/zsh jburris"
