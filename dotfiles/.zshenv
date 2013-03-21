@@ -1,6 +1,7 @@
 # Lets have a beautiful path ladies and gentlemen
 unsetopt ksh_arrays
 d=( ~/bin
+    /Applications/Postgres.app/Contents/MacOS/bin
     ~/.rbenv/shims
     /usr/local/share/npm/bin
     /usr/local/share/python

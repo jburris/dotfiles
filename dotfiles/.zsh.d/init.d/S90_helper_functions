@@ -24,4 +24,4 @@ jb_setup_ssh_agent() {
         fi
     fi
 }
-# jb_setup_ssh_agent
+jb_setup_ssh_agent
