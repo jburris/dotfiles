@@ -311,26 +311,13 @@
 		<integer>1</integer>
 		<key>TB Is Shown</key>
 		<integer>0</integer>
-		<key>TB Item Identifiers</key>
-		<array>
-			<string>New</string>
-			<string>Info</string>
-			<string>NSToolbarSeparatorItem</string>
-			<string>NSToolbarCustomizeToolbarItem</string>
-			<string>Close</string>
-			<string>NSToolbarSeparatorItem</string>
-			<string>Command</string>
-			<string>Profiles</string>
-		</array>
 		<key>TB Size Mode</key>
 		<integer>1</integer>
-		<key>TB Visibility Priority Values</key>
-		<dict/>
 	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>353 338 924 485 0 0 1920 1058 </string>
+	<string>353 338 605 485 0 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>569 91 970 967 0 0 1920 1058 </string>
+	<string>282 92 970 966 0 0 1920 1058 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1850,7 +1837,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-03-08T14:24:14Z</date>
+	<date>2013-03-12T16:58:50Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
