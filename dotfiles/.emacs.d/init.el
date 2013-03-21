@@ -37,7 +37,6 @@
         yaml-mode
         rhtml-mode
         haml-mode
-				ruby-electric
         color-theme
         (:name color-theme-solarized
                :after (progn
@@ -68,6 +67,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/elisp/feature-mode")
 (add-to-list 'load-path "~/.emacs.d/elisp/less-css-mode")
+(add-to-list 'load-path "~/.emacs.d/elisp/autopair")
+
 ;; optional configurations
 ;; default language if .feature doesn't have "# language: fi"
 ;(setq feature-default-language "fi")
@@ -77,7 +78,10 @@
 ;; and load feature-mode
 (require 'feature-mode)
 (require 'less-css-mode)
+(require 'autopair)
+
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+(autopair-global-mode) ;; enable autopair EVERYWHERE
 
 ;; From Sudish
 ;; Emacs HEAD now has support for auto-hiding the OS X menubar.
@@ -95,7 +99,7 @@
     "Make the current frame fullscreen."
     (interactive)
     (setq ns-auto-hide-menu-bar t)
-    (labels ((fp (p) (frame-parameter (selected-frame) p)))
+    (cl-labels ((fp (p) (frame-parameter (selected-frame) p)))
       ;; Make this frame large enough to cover the whole screen.
       ;; set-frame-size takes character rows and columns, so convert
       ;; all the pixel-based values accordingly.
