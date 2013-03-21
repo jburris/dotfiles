@@ -11,10 +11,10 @@ system "gem install bundler"
 system "bundle install"
 
 # EMACS
-puts info("Emacs is a special snowflake -- Installing")
-Dir.chdir home
-system "git clone https://github.com/railwaycat/emacs-mac-port"
-Dir.chdir "#{home}/emacs-mac-port"
+# puts info("Emacs is a special snowflake -- Installing")
+# Dir.chdir home
+# system "git clone https://github.com/railwaycat/emacs-mac-port"
+# Dir.chdir "#{home}/emacs-mac-port"
 # system "build-emacs-app.sh"
 
 #### Package specific configurations (auto-launch, user creation, etc) ####

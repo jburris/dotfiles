@@ -21,13 +21,16 @@ files.each { |file| system "ln -s -Ff #{dot_folder}/dotfiles/#{file} #{home}/#{f
 # Install default ruby
 ruby_version = File.read("#{dot_folder}/dotfiles/.rbenv-version").strip
 
-brew_packages = %w{ack autoconf automake autojump bazaar git git-flow gnutls imagemagick keychain libxml2 memcached mongodb mysql node rbenv rbenv-gemset ruby-build wget zsh}
+brew_packages = %w{ack autojump bazaar git git-flow gnutls imagemagick keychain libxml2 node rbenv rbenv-gemset ruby-build wget zsh}
 
 puts "Installing homebrew packages"
 brew_packages.each do |package|
   puts "Installing : #{package}"
   system "brew install #{package}" 
 end
+
+# Emacs special sauce
+# system "brew install emacs --cocoa"
 
 puts info("Installing Ruby #{ruby_version}")
 system "rbenv install #{ruby_version}"
