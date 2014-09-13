@@ -19,24 +19,16 @@ files.delete_if {|file_name| file_name.match(/\.{1,2}$/) }
 files.each { |file| system "ln -s -Ff #{dot_folder}/dotfiles/#{file} #{home}/#{file}" }
 
 # Install default ruby
-ruby_version = File.read("#{dot_folder}/dotfiles/.rbenv-version").strip
-
-brew_packages = %w{ack autojump bazaar git git-flow gnutls imagemagick keychain libxml2 node rbenv rbenv-gemset ruby-build wget zsh}
+ruby_version = File.read("#{dot_folder}/dotfiles/.ruby-version").strip
 
 puts "Installing homebrew packages"
-brew_packages.each do |package|
-  puts "Installing : #{package}"
-  system "brew install #{package}" 
-end
+system "brew bundle" 
 
 # Emacs special sauce
 # system "brew install emacs --cocoa"
 
 puts info("Installing Ruby #{ruby_version}")
 system "rbenv install #{ruby_version}"
-
-# rbenv rehash
-system "git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash"
 
 # Use ZSH as primary shell
 zsh    = "/usr/local/bin/zsh"

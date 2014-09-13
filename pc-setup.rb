@@ -8,7 +8,7 @@ dot_folder = home + "/.dotfiles"
 # Gems
 puts info("Installing ruby gems from Gemfile")
 system "gem install bundler"
-system "bundle install"
+# system "bundle install"
 
 # EMACS
 # puts info("Emacs is a special snowflake -- Installing")
