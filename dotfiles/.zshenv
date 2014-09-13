@@ -27,6 +27,9 @@ done
 PATH=${(j.:.)${s}}           #TODO : Learn what this command is exactly doing
 unset d s dir
 
+# ---- SHELL ---- #
+export SHELL=/usr/local/bin/zsh
+
 # ---- RBENV ---- #
 eval "$(rbenv init -)"
 jb_rbenv_present=1
