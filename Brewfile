@@ -1,18 +1,11 @@
-ack 
-autojump 
-bazaar 
-git 
-git-flow 
-gnutls 
-imagemagick 
-keychain 
-libxml2 
-memcached 
-mongodb 
-mysql 
-node 
-rbenv 
-rbenv-gemset 
-ruby-build 
-wget 
-zsh
+install git
+install vim
+install ack
+install autojump
+install ctags
+install zsh
+install rbenv
+install rbenv-gemset
+install rbenv-gem-rehash
+install ruby-build
+install tmux
